@@ -3,7 +3,7 @@ use shaco::ws;
 use tokio::io::AsyncWriteExt;
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
+async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let client = ws::WSClient::connect(ws::Events::Json).await?;
     let read = client.read;
 

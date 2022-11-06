@@ -13,7 +13,7 @@ pub struct WSClient {
     pub read: SplitStream<WebSocketStream<MaybeTlsStream<TcpStream>>>,
 }
 
-type Error = Box<dyn std::error::Error>;
+type Error = Box<dyn std::error::Error + Send + Sync>;
 
 #[derive(PartialEq)]
 pub enum Events {

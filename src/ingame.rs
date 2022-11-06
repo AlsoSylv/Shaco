@@ -16,7 +16,7 @@ pub enum TeamID {
 
 impl InGameClient {
     /// Create a new connection to the ingame api. This will return an error if a game is not detected
-    pub fn new() -> Result<Self, Box<dyn std::error::Error>> {
+    pub fn new() -> Result<Self, Box<dyn std::error::Error + Send + Sync>> {
         let client = build_reqwest_client(None)?;
         Ok(Self {
             port: 2999,

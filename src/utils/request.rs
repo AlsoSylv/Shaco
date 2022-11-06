@@ -2,7 +2,7 @@ use reqwest::{header, Certificate};
 
 pub fn build_reqwest_client(
     auth_token: Option<String>,
-) -> Result<reqwest::Client, Box<dyn std::error::Error>> {
+) -> Result<reqwest::Client, Box<dyn std::error::Error + Send + Sync>> {
     let cert = Certificate::from_pem(include_bytes!("../riotgames.pem"))?;
     let mut headers = header::HeaderMap::new();
 

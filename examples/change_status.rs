@@ -1,7 +1,7 @@
 use shaco::rest;
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
+async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let client = rest::RESTClient::new()?;
 
     client.put("/lol-chat/v1/me".to_string(),

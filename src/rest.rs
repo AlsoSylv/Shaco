@@ -7,7 +7,7 @@ pub struct RESTClient {
     reqwest_client: reqwest::Client,
 }
 
-type Error = Box<dyn std::error::Error>;
+type Error = Box<dyn std::error::Error + Send + Sync>;
 
 impl RESTClient {
     /// Create a new instance of the LCU REST wrapper
